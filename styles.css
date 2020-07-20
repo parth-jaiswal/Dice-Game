@@ -28,6 +28,15 @@ p {
   font-family: 'Indie Flower', cursive;
 }
 
+.play{
+  margin: 20px;
+}
+.player {
+  font-size: 1.5rem;
+  margin: 10px;
+  font-family: cursive;
+}
+
 img {
   width: 80%;
 }
@@ -38,4 +47,8 @@ footer {
   text-align: center;
   font-family: 'Indie Flower', cursive;
 
+}
+
+.score {
+display: none;
 }
