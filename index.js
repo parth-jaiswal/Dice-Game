@@ -10,23 +10,78 @@ function SentenceCase(player) {
   return player;
 }
 
-var player1= prompt("Enter Player1 Name: ")
-var player2= prompt("Enter Player2 Name: ")
 
-player1 = SentenceCase(player1)
-player2 = SentenceCase(player2)
-//for 1st image
-var n1 = randomNumber();
-document.querySelector(".img1").setAttribute("src", "images/dice"+n1.toString()+".png");
+var player1;
+var player2;
 
-//for 2nd image
-var n2 = randomNumber();
-document.querySelector(".img2").setAttribute("src", "images/dice"+n2.toString()+".png");
+var p1score = 0;
+var p2score = 0;
 
-if(n1>n2){
-  document.querySelector("h1").innerText = player1 + " Wins!";
-} else if (n2>n1)  {
-  document.querySelector("h1").innerText = player2 + " Wins!";
-} else {
-  document.querySelector("h1").innerText = "Draw Match!";
-}
+$(".start-btn").click(function(){
+  player1 = $(".p1").val();
+  player2 = $(".p2").val();
+  if (player1 === undefined || player2 === undefined){
+    alert("Enter Player Names first");
+  }
+  else {
+
+    $(".g1").click(function() {
+      var n1 = randomNumber();
+      $(".r1 .img1").attr("src", "images/dice"+n1.toString()+".png");
+      var n2 = randomNumber();
+      $(".r1 .img2").attr("src", "images/dice"+n2.toString()+".png");
+
+      if(n1>n2){
+        p1score++;
+      } else if (n2>n1)  {
+        p2score++;
+      } else {
+        p1score++;p2score++;
+      }
+      $(".g1").remove();
+    });
+
+    $(".g2").click(function() {
+
+      var n1 = randomNumber();
+      $(".r2 .img1").attr("src", "images/dice"+n1.toString()+".png");
+      var n2 = randomNumber();
+      $(".r2 .img2").attr("src", "images/dice"+n2.toString()+".png");
+
+      if(n1>n2){
+        p1score++;
+      } else if (n2>n1)  {
+        p2score++;
+      } else {
+        p1score++;p2score++;
+      }
+      $(".g2").remove();
+    });
+
+    $(".g3").click(function() {
+
+      var n1 = randomNumber();
+      $(".r3 .img1").attr("src", "images/dice"+n1.toString()+".png");
+      var n2 = randomNumber();
+      $(".r3 .img2").attr("src", "images/dice"+n2.toString()+".png");
+
+      if(n1>n2){
+        p1score++;
+      } else if (n2>n1)  {
+        p2score++;
+      } else {
+        p1score++;p2score++;
+      }
+
+      if (p1score > p2score ){
+        $("h1").text(player1 + " Wins");
+      } else if (p2score > p1score) {
+        $("h1").text(player2 + " Wins");
+      } else if(p1score === p2score && p1score>0){
+        $("h1").text("Match Draws");
+      }
+      $(".g3").remove();
+    });
+
+  }
+});
