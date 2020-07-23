@@ -20,12 +20,14 @@ var p2score = 0;
 $(".start-btn").click(function(){
   player1 = $(".p1").val();
   player2 = $(".p2").val();
-  if (player1 === undefined || player2 === undefined){
+  if ($(".p1").val()==="" || $(".p2").val()===""){
     alert("Enter Player Names first");
   }
   else {
-
-    $(".g1").click(function() {
+      $(".start-btn").slideUp("slow");
+      $(".letBegin").slideDown("slow");
+      $(".p1name").text(player1);$(".p2name").text(player2);
+      $(".g1").click(function() {
       var n1 = randomNumber();
       $(".r1 .img1").attr("src", "images/dice"+n1.toString()+".png");
       var n2 = randomNumber();
@@ -38,7 +40,7 @@ $(".start-btn").click(function(){
       } else {
         p1score++;p2score++;
       }
-      $(".g1").remove();
+      $(".g1").slideUp();
     });
 
     $(".g2").click(function() {
@@ -55,7 +57,7 @@ $(".start-btn").click(function(){
       } else {
         p1score++;p2score++;
       }
-      $(".g2").remove();
+      $(".g2").slideUp();
     });
 
     $(".g3").click(function() {
@@ -80,7 +82,7 @@ $(".start-btn").click(function(){
       } else if(p1score === p2score && p1score>0){
         $("h1").text("Match Draws");
       }
-      $(".g3").remove();
+      $(".g3").slideUp();
     });
 
   }
